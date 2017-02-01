@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>Functions & validation</h1>
+
+<form id="form1" action="#" onsubmit="return validateForm(this);">
+  first name: <input type="text" name="firstname"><br>
+  last name: <input type="text" name="lastname"><br>
+  password: <input type="text" name="password"><br>
+
+  <button>Check</button>
+</form>
+
+<hr><div id="message">Oi mate, Please Enter your Credentials.</div>
+    
+<script>    
+
+function validateForm(myForm) {
+
+   var firstname = myForm.firstname.value;
+    var lastname = myForm.lastname.value;
+    var password = myForm.password.value;
+
+    function validateCredentials(firstname, lastname, password) { 
+    
+        var upper=0; var lower=0;
+for(var i=0;i<password.length;i++) {
+    
+     if ('A' <= password[i] && password[i] <= 'Z') {
+        upper++; }
+     if ('a' <= password[i] && password[i] <= 'z') {
+        lower++; } } }
+  
+    if (firstname.length == 0 || lastname.length == 0) {
+        document.getElementById("message").innerHTML = ("Sorry mate but your first and/or last name is missing in the required field.");
+    return false; }
+    
+     else if (password.length <= 8 || lower < 1 || upper < 1) {
+       document.getElementById("message").innerHTML = ("Sorry mate but your password, " + password + ", appears to not meet our minimum requirements.");
+     return false; }
+    
+     else if (password.length > 7 && lower > 0 && upper > 0 && firstname.length > 0 && lastname.length > 0) { 
+       document.getElementById("message").innerHTML = ("Congratulations, mate. Your password and credentials are all good!"); 
+     return false; }}
+
+</script>
+</body>
+</html> 
